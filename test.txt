@@ -1,0 +1,11 @@
+$Env:RG = "RG-LCH-INFOFD22-210-michailkanakas"
+$Env:LOC = "westeurope"
+$Env:ENV = "aca-retro-env"
+$Env:APP = "aca-info210-retro-michail"
+
+az containerapp env create --name $Env:ENV -g $Env:RG -l $Env:LOC
+
+docker login acrinfofd22210.azurecr.io
+
+docker build ./api -t acrinfofd22210.azurecr.io/info210-retro-michail:1.0
+docker push acrinfofd22210.azurecr.io/info210-retro-michail:1.0
